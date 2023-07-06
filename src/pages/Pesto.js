@@ -13,7 +13,7 @@ const Pesto = () => {
   ]);
 
   const [selectedIngredient, setSelectedIngredient] = useState(null);
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState("");
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -132,9 +132,11 @@ const Pesto = () => {
                       />{" "}
                       gr
                     </label>
-                    <button className="inputButton" onClick={handleCalculate}>
-                      Aceptar
-                    </button>
+                    {quantity.length > 0 ? (
+                      <button className="inputButton" onClick={handleCalculate}>
+                        Aceptar
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               )}
