@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
+
+import PestoBody from "../components/PestoBody";
 
 const Pesto = () => {
   const [ingredients, setIngredients] = useState([
@@ -9,9 +12,19 @@ const Pesto = () => {
     { name: "Aceite de oliva", proportion: 160 },
   ]);
 
-  const [selectedIngredient, setSelectedIngredient] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [selectedIngredient, setSelectedIngredient] = useState(null);
+  const [quantity, setQuantity] = useState(null);
   const [result, setResult] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedIngredient(null);
+    setResult(null);
+    setQuantity(null);
+  };
+
+  const handleShowModal = () => setShowModal(true);
 
   const handleIngredientSelect = (ingredient) => {
     setSelectedIngredient(ingredient);
@@ -31,8 +44,10 @@ const Pesto = () => {
     );
 
     const calculatedIngredients = ingredients.map((ingredient) => {
-      const calculatedQuantity =
-        (ingredient.proportion * quantity) / selectedIngredientObj.proportion;
+      const calculatedQuantity = (
+        (ingredient.proportion * quantity) /
+        selectedIngredientObj.proportion
+      ).toFixed(0);
 
       return {
         ...ingredient,
@@ -44,16 +59,22 @@ const Pesto = () => {
   };
 
   const renderIngredientInputs = () => {
-    return ingredients.map((ingredient) => (
-      <div className="ingredientName" key={ingredient.name}>
-        <button
-          className="selectIngredient"
-          onClick={() => handleIngredientSelect(ingredient.name)}
-        >
-          {ingredient.name}
-        </button>
-      </div>
-    ));
+    return (
+      <select
+        className="selectIngredient"
+        onChange={(event) => handleIngredientSelect(event.target.value)}
+      >
+        {ingredients.map((ingredient) => (
+          <option
+            key={ingredient.name}
+            value={ingredient.name}
+            className="nameOfIngredient"
+          >
+            {ingredient.name}
+          </option>
+        ))}
+      </select>
+    );
   };
 
   const renderResult = () => {
@@ -63,7 +84,7 @@ const Pesto = () => {
 
     return (
       <div>
-        <h3 className="result">Resultado:</h3>
+        <h3 className="resultTitle">NECESITAS</h3>
         <div className="resultCard">
           {result.map((ingredient) => (
             <p className="resultName" key={ingredient.name}>
@@ -76,124 +97,61 @@ const Pesto = () => {
   };
   return (
     <>
-      {/* //-------------------- BODY : INGREDIENTES Y RECETA ----------------------------------------------- // */}
-      <div className="dish-title">
-        <h1>PESTO</h1>
-      </div>
-      <div className="dish-body">
-        <div className="rowFirst">
-          <div className="col-6">
-            <div className="dish-body-explanation">
-              <div className="recipee-container">
-                <div className="recipee-title">
-                  <h1>Ingredientes</h1>
-                </div>
-                <div className="recipee-ingredients">
-                  <ul>
-                    <li className="list-item">
-                      <span class="start">Albahaca</span>
-                      <span class="space"></span>
-                      <span class="end">100 gr.</span>
-                    </li>
-                    <li className="list-item">
-                      <span class="start">Piñones</span>
-                      <span class="space"></span>
-                      <span class="end">75 gr.</span>
-                    </li>
-                    <li className="list-item">
-                      <span class="start">Parmesano</span>
-                      <span class="space"></span>
-                      <span class="end">200 gr.</span>
-                    </li>
-                    <li className="list-item">
-                      <span class="start">Ajo</span>
-                      <span class="space"></span>
-                      <span class="end">15 gr.</span>
-                    </li>
-                    <li className="list-item">
-                      <span class="start">Aceite de Oliva</span>
-                      <span class="space"></span>
-                      <span class="end">160 gr.</span>
-                    </li>
-                    <li className="list-item">
-                      <span class="start">Sal</span>
-                      <span class="space"></span>
-                      <span class="end">Al gusto</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-6">
-            <div className="dish-body-explanation">
-              <h1>Receta</h1>
-
-              <p>
-                <span className="number">1</span> Separamos las hojas de
-                albahaca del tallo (no lo utilizamos porque amarga y estropea el
-                resultado), las lavamos y secamos a conciencia. Para ello, las
-                extendemos sobre una hoja de papel absorbente de cocina,
-                colocamos otra hoja encima y presionamos ligeramente con la
-                palma de la mano, con cuidado de no romper ninguna hoja.
-              </p>
-              <p>
-                <span className="number">2</span> Mientras las hojas de albahaca
-                se secan, pelamos los dientes de ajo, los cortamos en dos, a lo
-                largo, y retiramos el gérmen{" "}
-              </p>
-              <p>
-                <span className="number">3</span> Tostamos los piñones en una
-                sartén, sin aceite.
-              </p>
-              <p>
-                <span className="number">4</span> Colocamos todos los
-                ingredientes en el vaso de un robot de cocina, junto con la
-                mitad del aceite y una pizca de sal, y trituramos.
-              </p>
-              <p>
-                <span className="number">5</span> Cuando hayamos obtenido una
-                papilla y no se aprecien trozos de piñones ni de albahaca,
-                dejamos de triturar para añadir el resto del aceite. Trituramos
-                de nuevo, sólo para integrar el aceite, y ya tenemos nuestra
-                salsa de pestolista para utilizar.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div>
-        <h2>Calculadora de Cantidades</h2>
-        <div className="selectIngredient">
-          <h3>Selecciona un ingrediente:</h3>
-          {renderIngredientInputs()}
+        <div className="dish-title">
+          <h1>PESTO</h1>
         </div>
-        {selectedIngredient && (
-          <div>
-            <h3 className="selectedIngredient">
-              Ingrediente seleccionado: {selectedIngredient}
-            </h3>
-            <div className="cuantity">
-              <label>
-                Cantidad disponible:
-                <input
-                  type="text"
-                  value={quantity}
-                  onChange={handleQuantityChange}
-                  className="inputForm"
-                />{" "}
-                gr
-              </label>
-              <button className="inputButton" onClick={handleCalculate}>
-                Aceptar
-              </button>
-            </div>
-          </div>
-        )}
-        {renderResult()}
-      </div>
+        <Button variant="success botonCalcula" onClick={handleShowModal}>
+          CALCULA TUS CANTIDADES
+        </Button>
 
-      {/* //-------------------------CALCULADORA---------------------------------------------------------------// */}
+        <PestoBody />
+
+        <Modal className="modal" show={showModal} onHide={handleCloseModal}>
+          <Modal.Body>
+            <div className="calculatorWrapper">
+              <div className="selectIngredient">
+                <h3 className="selectIngredientTitle">
+                  Selecciona un ingrediente:
+                </h3>
+
+                {renderIngredientInputs()}
+              </div>
+              {selectedIngredient && (
+                <div>
+                  <h3 className="selectedIngredient">
+                    Cantidad de {selectedIngredient}
+                  </h3>
+                  <div className="cuantity">
+                    <label className="label">
+                      <input
+                        type="number"
+                        value={quantity}
+                        onChange={handleQuantityChange}
+                        className="inputForm"
+                      />{" "}
+                      gr
+                    </label>
+                    <button className="inputButton" onClick={handleCalculate}>
+                      Aceptar
+                    </button>
+                  </div>
+                </div>
+              )}
+              {renderResult()}
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="danger"
+              onClick={handleCloseModal}
+              className="closeCalculateForm"
+            >
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </>
   );
 };

@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 :root {
   --primary: #ffffff;
   --secondary: #000000;
 }
 body {
   margin: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
   padding: 20px;
   font-family: "Poppins";
-  background: var(--secondary);
+  background-image: linear-gradient(to bottom, #385bce, #9c2df1, #be7beb);
+  background-repeat: no-repeat;
 }
 * {
   color: #ffffff;
@@ -38,16 +45,18 @@ button {
   border: 0;
   padding: 8px;
   border-radius: 4px;
-  color: white;
+  color:  rgb(94, 94, 170);
   background: var(--primary);
   cursor: pointer;
 }
 header{
-  background-color: rgb(101, 100, 100);
+ 
   padding:5px;
   border-radius:10px
 }
 /* navbar */
+
+
 header nav {
   display: flex;
   gap: 16px;
@@ -58,8 +67,9 @@ header nav {
 }
 header nav h1 {
   margin-right: auto;
-  border-bottom: 3px solid rgb(255, 0, 0);
-  color:rgb(255, 200, 0)
+  border-bottom: 3px solid rgb(255, 166, 0);
+  color:rgb(255, 255, 255);
+  font-family: 'Righteous', cursive;
 }
 header nav a{
   text-decoration: none;
@@ -70,11 +80,7 @@ header nav a{
   margin-top:15px;
   
 }
-header nav a.active {
-  background: rgb(255, 255, 255);
-  color:black
 
-}
 
 
 .dish-title h1{
@@ -83,7 +89,9 @@ header nav a.active {
  display:flex;
  justify-content: center;
   align-items: center;
-  font-size:40px
+  font-size:80px;
+  font-family: 'Righteous', cursive;
+  color:orange
 }
 
 .rowFirst{
@@ -96,12 +104,19 @@ header nav a.active {
 .col-6{
   width:500px
 }
+
+.dish-body{
+  margin-top:30px
+}
 .dish-body-explanation h1 {
   display:flex;
  justify-content: center;
   align-items: center;
+  font-family: 'Righteous', cursive;
 }
-
+.dish-body-explanation{
+  margin-bottom:50px
+}
 .main-page{
   margin-top:30px;
 }
@@ -118,19 +133,23 @@ header nav a.active {
   text-decoration: none;
 padding: 6px;
 border-radius: 100px;
-background-color: white;
-color:black;
+background-color:#ffffff;
+color:purple;
 width:300px;
 height:100px;
 font-size:60px;
 text-align: center;
+transition: 0.2s ease-in-out;
+border:2px solid black;
+font-family: 'Righteous', cursive;
 }
 
 .buttons a:hover{
   cursor: pointer;
+  background-color: purple;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  color:white;
 
-background-color: rgb(7, 142, 232);
-color:rgb(255, 252, 252)
 }
 
 .recipee-container{
@@ -139,6 +158,9 @@ border-radius:10px;
 color:black;
 padding:0px 50px 50px 50px;
 margin-top:0px;
+-webkit-box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 0px -5px rgba(0,0,0,0.75);
 }
 .recipee-title h1{
   color:rgb(59, 89, 220);
@@ -147,14 +169,6 @@ margin-top:0px;
   margin-bottom:20px;
  
 }
-
-
-
-
-
-
-
-
 
 ul {
   list-style-type: none;
@@ -228,15 +242,21 @@ border:none
 
 .selectIngredient{
   background-color: rgb(255, 255, 255);
-  color:black
+  color:black;
+  width:100px
 }
 .inputForm{
   background-color: white;
   color:black
 }
 .inputButton{
-  background-color: rgb(17, 129, 233);
-  margin-left:16px
+  background-color: rgb(56, 174, 58);
+  margin-left:16px;
+  color:white;
+
+}
+.iconocheck{
+  color:white
 }
 .selectIngredient{
   width:500px;
@@ -248,6 +268,8 @@ border:none
 }
 .selectedIngredient{
   margin-top: 50px;
+  color:black;
+  font-family: 'Righteous', cursive;
 }
 .result{
   margin-top: 50px;
@@ -255,9 +277,154 @@ border:none
 .resultCard{
   background-color: white;
   color:black;
-  width:500px
+  width:400px;
+  justify-content: center;
+  border-radius: 10PX;
 }
 .resultName{
   color:black;
   text-align: center;
+  font-size:20px;
+  font-family: 'Righteous', cursive;
 }
+
+.buttonCalculator {
+  color:rgb(255, 255, 255);
+  background-color: rgb(105, 210, 70);
+  margin: top 30px;
+  width:400px;
+  height:100px;
+  font-size:30px;
+  font-weight: bolder;
+ 
+}
+.selectIngredient{
+  width:400px
+}
+.label{
+  color:black
+}
+
+.botonCalcula{
+  width:500px;
+  height:100px;
+  font-size: 30px;
+margin-left:500px;
+margin-bottom:20px;
+
+color:black;
+background:linear-gradient(to right, purple 50%, rgb(255, 255, 255) 50%);
+background-size: 200% ;
+background-position: right;
+transition: background-position 0.3s;
+border-radius:20px;
+font-family: 'Righteous', cursive;
+border:3px solid purple
+
+}
+.botonCalcula:hover{
+background-position: left;
+color:white;
+border:3px solid rgb(255, 255, 255)
+
+}
+
+.selectedIngredient{
+text-align: center;
+}
+.cuantity{
+  text-align: center;
+}
+
+.renderIngredientsInputs{
+text-align: center;
+}
+
+.closeCalculateForm{
+display: flex;
+margin:0 auto;
+}
+
+.selectIngredient{
+ margin:0 auto
+}
+.resultTitle{
+  text-align: center;
+  margin-top:50px;
+  color:black;
+  font-family: 'Righteous', cursive;
+
+}
+.resultCard{
+ background-color:rgba(206, 206, 206, 0.423);
+ margin-left:30px
+}
+
+.modal-header{
+  color: black;
+  justify-content: center;
+}
+
+
+.nameOfIngredient{
+  color:black;
+}
+
+.modal{
+  background-color: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(4px);
+ 
+}
+
+.modal-header{
+  background-color: rgba(177, 177, 177, 0.375);
+}
+.explanationSelect{
+  color:black
+}
+
+.navButtons{
+  margin-top:-10px
+;
+color:rgb(255, 255, 255)
+}
+
+.navButtons:hover{
+
+  color:orange
+
+}
+
+.main-page-subitle{
+  text-align: center;
+  justify-content: center;
+  color:orange;
+  font-family: 'Righteous', cursive;
+  margin-top:100px
+}
+
+.pestoImg{
+
+  width:300px;
+  height:400px; 
+
+ margin-left:600px;
+ margin-bottom: 50px;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hummusImg{
+  width:300px;
+  height:400px; 
+
+ margin-left:600px;
+ margin-bottom: 50px;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.selectIngredientTitle{
+  font-family: 'Righteous', cursive;
+}
+

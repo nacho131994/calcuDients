@@ -7,15 +7,23 @@ const RootLayout = () => {
       <div className="root-layout">
         <header>
           <nav>
-            <h1 Link to="/">
-              CalcuDients
-            </h1>
-            <NavLink to="/">HOME</NavLink>
-            <NavLink to="pesto">PESTO</NavLink>
-            <NavLink to="hummus">HUMMUS</NavLink>
+            <h1>IngredientsCalculator</h1>
+
+            <NavLink to="/">
+              <p className="navButtons">HOME</p>
+            </NavLink>
+            <NavLink to="pesto">
+              {" "}
+              <p className="navButtons">PESTO</p>
+            </NavLink>
+            <NavLink to="hummus">
+              {" "}
+              <p className="navButtons">HUMMUS</p>
+            </NavLink>
           </nav>
         </header>
       </div>
+
       <Outlet />
     </>
   );
