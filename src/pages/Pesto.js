@@ -21,7 +21,7 @@ const Pesto = () => {
     setShowModal(false);
     setSelectedIngredient(null);
     setResult(null);
-    setQuantity(null);
+    setQuantity("");
   };
 
   const handleShowModal = () => setShowModal(true);
@@ -129,7 +129,7 @@ const Pesto = () => {
                         value={quantity}
                         onChange={handleQuantityChange}
                         className="inputForm"
-                      />{" "}
+                      />
                       gr
                     </label>
                     {quantity.length > 0 ? (

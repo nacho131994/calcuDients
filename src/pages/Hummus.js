@@ -23,7 +23,7 @@ const Hummus = () => {
     setShowModal(false);
     setSelectedIngredient(false);
     setResult(null);
-    setQuantity(null);
+    setQuantity("");
   };
 
   const handleShowModal = () => setShowModal(true);
