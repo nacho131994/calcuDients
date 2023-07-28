@@ -428,3 +428,6 @@ color:rgb(255, 255, 255)
   font-family: 'Righteous', cursive;
 }
 
+.disabledOption{
+  color:rgb(230, 230, 230)
+}
